@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import Title from '../components/Title'
-import music from './api/music'
 import axiosFetch from '../config/axios'
+import Toptrack from '../components/Toptrack'
 import { useEffect, useState } from 'react/cjs/react.development'
 
 
@@ -34,7 +32,7 @@ useEffect(() =>{
         <link rel="icon" href="/favicon.ico" />
       </Head> 
 
-      <nav className="nav bg-slate-900 ">
+      <nav className="nav bg-slate-900 sticky top-0 z-50">
         <div className="main-container gap-x-6 justify-between h-full w-full ">
           <div>
             <Link href="/" passHref>
@@ -118,7 +116,7 @@ useEffect(() =>{
         <div className='main-container py-10'>
           <div className='w-full'>
             <h1 className='text-header text-center text-3xl'>Kenapa beli Premium?</h1>
-            <div class="flex justify-center grid grid-cols-1 gap-4 mt-10 ml-10 md:grid-cols-2 lg:grid-cols-4 ">
+            <div className="flex justify-center grid grid-cols-1 gap-4 mt-10 ml-10 md:grid-cols-2 lg:grid-cols-4 ">
             <div className='bg-slate-800 p-5 rounded-lg'>
             <div className='text-center py-8'>
                 <Image
@@ -203,30 +201,147 @@ useEffect(() =>{
                 />
                 <h2 className='text-white font-bold tracking-wider text-3xl'>Trending Musik</h2>
               </div>
-              <div className='grid grid-cols-1 mt-10 gap-5 overflow-y-auto h-64 scrollbar-hide md:grid-cols-3 lg:grid-cols-4'>
+              <div className='grid grid-cols-1 mt-10 gap-5 overflow-y-auto h-72 scrollbar-hide md:grid-cols-3 lg:grid-cols-4'>
                 {dataMusic && dataMusic.map((music) =>{
-                  return (
-                    <div className='bg-slate-800 p-3 rounded-md flex items-center gap-x-2 gap-y-4'>
-                         <Image
-                          unoptimized
-                          src='/icons/brandspotify.svg'
-                          width="24"
-                          height="24"
-                          alt="star"
-                          layout="fixed"
-                          />
-                          <div>
-                          <p className='text-white text-[12px] font-semibold'>{music.songTitle}</p>
-                          <p className='text-white text-[8px]'>Artist: {music.artist}</p>
-                          
-                          </div>
-                    </div>
-                  )
+                 return <Toptrack key={music.songId}{...music} /> 
                 })}
                 </div>
             </div>
             </div>
         </section>
+        <footer className='bg-black mt-10'>
+          <div className='main-container py-20'>
+            <div className='grid grid-cols-1 ml-10 gap-4 md:grid-cols-3 lg:grid-cols-5'>
+            <Link href="#" passHref>
+            <a><Image
+                unoptimized
+                src='spotify_text_white.svg'
+                height="30px"
+                width="170px"
+                alt="Spotify"
+                /></a>
+                </Link>
+                
+                <div>
+                  <ul className='gap-2'>
+                    <li>
+                    <p className='uppercase font-semibold text-white/80 text-[12px] mb-2'>Perusahaan</p>
+                    </li>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>Tentang</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>Pekerjaan</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>For the Record</a></Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className='gap-2'>
+                    <li>
+                    <p className='uppercase font-semibold text-white/80 text-[12px] mb-2'>Komunitas</p>
+                    </li>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>Untuk Artis</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>Pengembang</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>Iklan</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>Investor</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>Vendor</a></Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className='gap-2'>
+                    <li>
+                    <p className='uppercase font-semibold text-white/80 text-[12px] mb-2'>Tautan Berguna</p>
+                    </li>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>Dukungan</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>Pemutar Web</a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>Aplikasi Seluler Gratis</a></Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className='flex justify-end gap-x-16 gap-2'>
+                    <li>
+                    <Link href="#" passHref>
+                      <a className='text-footer-item'>
+                      <Image
+                            unoptimized
+                            src='/icons/ig.svg'
+                            height="32"
+                            width="32"
+                            alt="Instagram"
+                            />
+                        </a>
+                        </Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>    
+                    <Image
+                            unoptimized
+                            src='/icons/twitter.svg'
+                            height="32"
+                            width="32"
+                            alt="Twitter"
+                            /></a></Link>
+                    </li>
+                    <li>
+                    <Link href="#" passHref><a className='text-footer-item'>
+                    <Image
+                            unoptimized
+                            src='/icons/facebook.svg'
+                            height="32"
+                            width="32"
+                            alt="Facebook"
+                            /></a></Link>
+                    </li>
+                  </ul>
+                </div>
+              
+            </div>
+          
+          </div>
+          <div className='main-container pb-10 ml-10'>
+          <div className='flex items-center gap-x-6 ml-10'>
+                  <Link href='#' passHref>
+                  <a className='text-footer-item-2'>Hukum</a>
+                  </Link>
+                  <Link href='#' passHref>
+                  <a className='text-footer-item-2'>Pusat Privasi</a>
+                  </Link>
+                  <Link href='#' passHref>
+                  <a className='text-footer-item-2'>Kebijakan Privasi</a>
+                  </Link>
+                  <Link href='#' passHref>
+                  <a className='text-footer-item-2'>Cookie</a>
+                  </Link>
+                  <Link href='#' passHref>
+                  <a className='text-footer-item-2'>Tentang Iklan</a>
+                  </Link>
+                </div>
+                </div>
+        </footer>
     </div>
   )
 }

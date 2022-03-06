@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Title = () => {
   return (
@@ -6,4 +7,4 @@ const Title = () => {
   )
 }
 
-export default Title
+export default Title 

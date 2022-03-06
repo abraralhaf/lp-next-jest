@@ -48,3 +48,14 @@ a {
   background-position: center right;
   background-size: 35%
 }
+
+.text-footer-item{
+  @apply text-white font-semibold hover:text-green-500 py-1 text-[13px];
+}
+
+.text-footer-item-2{
+  @apply text-gray-400 text-[10px] hover:text-green-500;
+}
+.li{
+ margin-bottom: 5px;
+}
