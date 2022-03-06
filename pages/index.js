@@ -4,12 +4,27 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Title from '../components/Title'
 import music from './api/music'
+import axiosFetch from '../config/axios'
 import { useEffect, useState } from 'react/cjs/react.development'
 
 
 
 export default function Home() {
+ 
+const [dataMusic, setDataMusic] = useState(null);
 
+
+const getRecommendation = async() =>{
+  const result = await axiosFetch('hot');
+  console.log("result :",result.data);
+  const resultApi = result.data
+  console.log("hasil", resultApi.data);
+  setDataMusic(resultApi.data)
+}
+useEffect(() =>{
+  getRecommendation();
+  // setTracks(getRecommendation);
+},[])
 
   return (
     <div className='main'>
@@ -37,23 +52,23 @@ export default function Home() {
                 <ul className='flex items-center gap-x-7'>
                   <li className='hidden sm:list-item'>
                     <Link href="#" passHref>
-                      <a className='text-header text-sm'>Premium</a>
+                      <a className='text-header text-sm hover:text-green-500'>Premium</a>
                     </Link>
                   </li>
                   <li className='hidden sm:list-item'>
                     <Link href="#" passHref>
-                      <a className='text-header text-sm'>Dukungan</a>
+                      <a className='text-header text-sm  hover:text-green-500'>Dukungan</a>
                     </Link>
                   </li>
                   <li className='hidden sm:list-item'>
                     <Link href="#" passHref>
-                      <a className='text-header text-sm'>Download</a>
+                      <a className='text-header text-sm  hover:text-green-500'>Download</a>
                     </Link>
                   </li>
                 
                   <li>
                     <Link href="#" passHref>
-                      <button className="text-header button-login text-sm">Masuk</button>
+                      <button className="text-header button-login text-sm  hover:text-green-500">Masuk</button>
                     </Link>
                   </li>
                 </ul>
@@ -103,7 +118,7 @@ export default function Home() {
         <div className='main-container py-10'>
           <div className='w-full'>
             <h1 className='text-header text-center text-3xl'>Kenapa beli Premium?</h1>
-            <div class="flex justify-center grid grid-cols-4 gap-4 mt-10 ml-10">
+            <div class="flex justify-center grid grid-cols-1 gap-4 mt-10 ml-10 md:grid-cols-2 lg:grid-cols-4 ">
             <div className='bg-slate-800 p-5 rounded-lg'>
             <div className='text-center py-8'>
                 <Image
@@ -176,21 +191,37 @@ export default function Home() {
 
         <section>
           <div className='main-container py-10'>
-            <div>
-              <div className='flex items-center gap-x-4'>
+            <div className='ml-10'>
+              <div className='flex items-center gap-x-4 py-2'>
                 <Image
                 unoptimized
-                src='/icons/starticket.svg'
+                src='/icons/star.svg'
                 width="28"
                 height="28"
                 alt="star"
                 layout="fixed"
                 />
-                <h2 className='text-white font-bold tracking-wider'>Trending Musik</h2>
+                <h2 className='text-white font-bold tracking-wider text-3xl'>Trending Musik</h2>
               </div>
-              <div className='grid grid-cols-3'>
-                {hotMusic && hotMusic.map((music) =>{
-                  return<p>{music.songTitle}</p>
+              <div className='grid grid-cols-1 mt-10 gap-5 overflow-y-auto h-64 scrollbar-hide md:grid-cols-3 lg:grid-cols-4'>
+                {dataMusic && dataMusic.map((music) =>{
+                  return (
+                    <div className='bg-slate-800 p-3 rounded-md flex items-center gap-x-2 gap-y-4'>
+                         <Image
+                          unoptimized
+                          src='/icons/brandspotify.svg'
+                          width="24"
+                          height="24"
+                          alt="star"
+                          layout="fixed"
+                          />
+                          <div>
+                          <p className='text-white text-[12px] font-semibold'>{music.songTitle}</p>
+                          <p className='text-white text-[8px]'>Artist: {music.artist}</p>
+                          
+                          </div>
+                    </div>
+                  )
                 })}
                 </div>
             </div>
