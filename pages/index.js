@@ -8,21 +8,21 @@ import { useEffect, useState } from 'react/cjs/react.development'
 
 
 export default function Home() {
- 
-const [dataMusic, setDataMusic] = useState(null);
+    
+    // const [dataMusic, setDataMusic] = useState(null);
 
 
-const getRecommendation = async() =>{
-  const result = await axiosFetch('hot');
-  console.log("result :",result.data);
-  const resultApi = result.data
-  console.log("hasil", resultApi.data);
-  setDataMusic(resultApi.data)
-}
-useEffect(() =>{
-  getRecommendation();
-  // setTracks(getRecommendation);
-},[])
+    // const getRecommendation = async() =>{
+    //   const result = await axiosFetch('hot');
+    //   console.log("result :",result.data);
+    //   const resultApi = result.data
+    //   console.log("hasil", resultApi.data);
+    //   setDataMusic(resultApi.data)
+    // }
+    // useEffect(() =>{
+    //   getRecommendation();
+    //   // setTracks(getRecommendation);
+    // },[])
 
   return (
     <div className='main'>
@@ -187,7 +187,7 @@ useEffect(() =>{
           <div className='border-t border-slate-800'></div>
         </section>
 
-        <section>
+        {/* <section>
           <div className='main-container py-10'>
             <div className='ml-10'>
               <div className='flex items-center gap-x-4 py-2'>
@@ -208,7 +208,9 @@ useEffect(() =>{
                 </div>
             </div>
             </div>
-        </section>
+        </section> */}
+
+
         <footer className='bg-black mt-10'>
           <div className='main-container py-20'>
             <div className='grid grid-cols-1 ml-10 gap-4 md:grid-cols-3 lg:grid-cols-5'>
