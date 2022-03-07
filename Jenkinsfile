@@ -1,5 +1,5 @@
 
-def gitUrlAuth = "https://${env.TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
+def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
 
 pipeline {
     agent any
