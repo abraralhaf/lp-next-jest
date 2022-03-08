@@ -109,7 +109,7 @@ export default function Home() {
                </p>
             </div>
             </div>  
-            <div className='border-t border-slate-800'></div>
+            <div className='border-t border-slate-50'></div>
       </header>
     
       <section>
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
         
           </div>
-          <div className='border-t border-slate-800'></div>
+          <div className='border-t border-slate-50'></div>
         </section>
 
         {/* <section>

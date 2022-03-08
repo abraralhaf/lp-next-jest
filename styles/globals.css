@@ -43,10 +43,10 @@ a {
 }
 
 .header-bg{
-  background-image: url(/bg-header.jpg);
+  background-image: url(/bg_new.jpg);
   background-repeat: no-repeat;
   background-position: center right;
-  background-size: 35%
+  background-size: 33%
 }
 
 .text-footer-item{
