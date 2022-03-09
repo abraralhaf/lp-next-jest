@@ -1,4 +1,4 @@
-// def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
+def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
 
 pipeline {
     agent any
@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Setup'){
             steps{
-               git "https://${SERVER_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
+               git gitUrlAuth
                
                 echo 'finishing setup'
             }
