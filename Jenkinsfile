@@ -22,7 +22,9 @@ pipeline {
         stage('Build') {
             steps { 
                 echo 'executing node..'
-                sh 'npm install'
+                script{
+                    npm install
+                }
               
            }
         }
