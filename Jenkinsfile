@@ -15,7 +15,7 @@ pipeline {
         stage('Setup'){
             steps{
                git gitUrlAuth
-               echo 'finishing setup'
+               echo 'finishing setup update'
             }
             
         }
@@ -44,6 +44,7 @@ pipeline {
             steps{
                 sh 'npm run build'
                 echo 'finishing deployment'
+                sh 'dockerfile'
             }
         }
     }
