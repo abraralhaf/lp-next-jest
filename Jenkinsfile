@@ -19,30 +19,25 @@ pipeline {
             }
             
         }
+        
+        stage('Build') {
+            steps { 
+                echo 'executing node..'
+                sh 'npm install'
+              
+           }
+        }
           stage('Test'){
-            // when{
-            //         expression{
-            //             BRANCH_NAME == 'master'
-            //         }
-            //     }
+            when{
+                    expression{
+                        BRANCH_NAME == 'master'
+                    }
+                }
             steps{
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh 'npm run test'
                 echo 'finishing test'
             }
-        }
-        stage('Build') {
-            steps { 
-                echo 'executing node..'
-                sh 'npm install'
-                
-                echo 'executing yarn..'
-                sh 'npm install yarn'
-                
-                
-                echo 'finishing build..'
-              
-           }
         }
       
         stage('Deployment'){
