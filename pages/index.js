@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import axiosFetch from '../config/axios'
-// import Toptrack from '../components/Toptrack'
+import Toptrack from '../components/Toptrack'
 import { useEffect, useState } from 'react/cjs/react.development'
 
 
@@ -109,7 +109,7 @@ export default function Home() {
                </p>
             </div>
             </div>  
-            <div className='border-t border-slate-50'></div>
+            <div className='border-t border-slate-700'></div>
       </header>
     
       <section>
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
         
           </div>
-          <div className='border-t border-slate-50'></div>
+          <div className='border-t border-slate-700'></div>
         </section>
 
         {/* <section>
