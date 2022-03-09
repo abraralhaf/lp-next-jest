@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage('Setup'){
+        stage('Load Git'){
             steps{
                git gitUrlAuth
                echo 'finishing setup'
