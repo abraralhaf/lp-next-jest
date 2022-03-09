@@ -1,27 +1,39 @@
-
-def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
+// def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
 
 pipeline {
     agent any
 
     environment{
         CI = 'true'
+        SERVER_TOKEN = credentials('TOKEN_GITHUB')
     }
     tools{
         nodejs "Node-16.14.0"
     }
+
     stages {
         stage('Setup'){
             steps{
-               git gitUrlAuth
+               git "https://${SERVER_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
                
                 echo 'finishing setup'
             }
             
         }
+          stage('Test'){
+            when{
+                    expression{
+                        BRANCH_NAME == 'main'
+                    }
+                }
+            steps{
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh 'npm run test'
+                echo 'finishing test'
+            }
+        }
         stage('Build') {
             steps { 
-                
                 echo 'executing node..'
                 sh 'npm install'
                 
@@ -33,14 +45,7 @@ pipeline {
               
            }
         }
-        stage('Test'){
-            steps{
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh 'npm run test'
-                
-                echo 'finishing test'
-            }
-        }
+      
         stage('Deployment'){
             steps{
                 sh 'npm run build'
