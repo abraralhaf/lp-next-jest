@@ -3,13 +3,13 @@ def gitUrlAuth = "https://github.com/abraralhaf/lp-next-jest.git/"
 
 node {
  
-    stage('Load Git'){
-            steps{
-               git gitUrlAuth
-               echo 'finishing setup'
-            }
+    // stage('Load Git'){
+    //         steps{
+    //            git gitUrlAuth
+    //            echo 'finishing setup'
+    //         }
             
-    }
+    // }
 
     stage('Build') {
         steps { 
