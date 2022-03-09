@@ -42,7 +42,7 @@ pipeline {
             steps{
                 sh 'npm run build'
                 echo 'finishing deployment'
-                node{
+              
                 checkout scm
 
                 docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
@@ -50,7 +50,7 @@ pipeline {
                     /* push the container the custom regitry */
                     customImage.push()    
                     }
-                }
+                
             }
         }
      
