@@ -27,7 +27,7 @@ pipeline {
               
            }
         }
-          stage('Test'){
+        stage('Test'){
             // when{
             //         expression{
             //             BRANCH_NAME == 'master'
@@ -39,21 +39,19 @@ pipeline {
                 echo 'finishing test'
             }
         }
-      
         stage('Deployment'){
             steps{
                 sh 'npm run build'
                 echo 'finishing deployment'
             }
+        }
+        stage('Build Image Docker'){
+            checkout scm
 
-            stage('Build Image Docker'){
-                checkout scm
-
-                docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
-                    def customImage = docker.build("alhuft/webapp")
-                    /* push the container the custom regitry */
-                    customImage.push()
-                    
+            docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
+                def customImage = docker.build("alhuft/webapp")
+                /* push the container the custom regitry */
+                customImage.push()    
                 }
             }
 
