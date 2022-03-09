@@ -1,10 +1,58 @@
-node {
-  
-      checkout scm
+def gitUrlAuth = "https://github.com/abraralhaf/lp-next-jest.git/"
 
-      docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
-      def customImage = docker.build("alhuft/webapp")
-      /* push the container the custom regitry */
-      customImage.push()    
-      }
+
+node {
+    
+    environment{
+        CI = 'true'
+    }
+    tools{
+        nodejs "Node-16.14.0"
+    }
+
+    stages {
+        stage('Load Git'){
+            steps{
+               git gitUrlAuth
+               echo 'finishing setup'
+            }
+            
+        }
+
+        stage('Build') {
+            steps { 
+                echo 'executing node..'
+                npm install
+           }
+        }
+        stage('Test'){
+            // when{
+            //         expression{
+            //             BRANCH_NAME == 'master'
+            //         }
+            //     }
+            steps{
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh 'npm run test'
+                echo 'finishing test'
+            }
+        }
+        stage('Deployment'){
+            steps{
+                sh 'npm run build'
+                echo 'finishing deployment'
+              
+            //     checkout scm
+
+            //     docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
+            //         def customImage = docker.build("alhuft/webapp")
+            //         /* push the container the custom regitry */
+            //         customImage.push()    
+            //    }
+                
+            }
+        }
+     
+    }
+ 
 }
