@@ -5,8 +5,8 @@ pipeline {
 
     environment{
         CI = 'true'
-        SERVER_TOKEN = credentials('TOKEN_GITHUB')
     }
+
     tools{
         nodejs "Node-16.14.0"
     }
@@ -15,15 +15,14 @@ pipeline {
         stage('Setup'){
             steps{
                git gitUrlAuth
-               
-                echo 'finishing setup'
+               echo 'finishing setup'
             }
             
         }
           stage('Test'){
             when{
                     expression{
-                        BRANCH_NAME == 'main'
+                        BRANCH_NAME == 'master'
                     }
                 }
             steps{
