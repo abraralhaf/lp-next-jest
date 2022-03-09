@@ -6,9 +6,7 @@ node {
     environment{
         CI = 'true'
     }
-    tools{
-        nodejs "Node-16.14.0"
-    }
+   
 
     stages {
         stage('Load Git'){
@@ -22,7 +20,9 @@ node {
         stage('Build') {
             steps { 
                 echo 'executing node..'
-                npm install
+                    nodejs(nodeJSInstallationName: 'node') {
+                    sh ' npm install'
+                    }
            }
         }
         stage('Test'){
@@ -34,12 +34,17 @@ node {
             steps{
                 sh "chmod +x -R ${env.WORKSPACE}"
                 sh 'npm run test'
+                  nodejs(nodeJSInstallationName: 'node') {
+                    sh ' npm run test'
+                    }
                 echo 'finishing test'
             }
         }
         stage('Deployment'){
             steps{
-                sh 'npm run build'
+                nodejs(nodeJSInstallationName: 'node') {
+                    sh 'npm run build'
+                }
                 echo 'finishing deployment'
               
             //     checkout scm
