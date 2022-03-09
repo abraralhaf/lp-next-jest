@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import axiosFetch from '../config/axios'
-import Toptrack from '../components/Toptrack'
+// import Toptrack from '../components/Toptrack'
 import { useEffect, useState } from 'react/cjs/react.development'
 
 
