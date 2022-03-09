@@ -22,9 +22,7 @@ pipeline {
         stage('Build') {
             steps { 
                 echo 'executing node..'
-                script{
-                    npm install
-                }
+                npm install
               
            }
         }
@@ -44,6 +42,15 @@ pipeline {
             steps{
                 sh 'npm run build'
                 echo 'finishing deployment'
+                node{
+                checkout scm
+
+                docker.withRegistry('https://registry.hub.docker.com','dockerHub'){
+                    def customImage = docker.build("alhuft/webapp")
+                    /* push the container the custom regitry */
+                    customImage.push()    
+                    }
+                }
             }
         }
      
