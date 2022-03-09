@@ -15,7 +15,7 @@ pipeline {
         stage('Setup'){
             steps{
                git gitUrlAuth
-               echo 'finishing setup update'
+               echo 'finishing setup'
             }
             
         }
