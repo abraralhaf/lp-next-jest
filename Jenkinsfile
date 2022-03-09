@@ -1,12 +1,10 @@
-def gitUrlAuth = "https://${env.GITHUB_TOKEN}@github.com/abraralhaf/lp-next-jest.git/"
+def gitUrlAuth = "https://github.com/abraralhaf/lp-next-jest.git/"
 
 pipeline {
     agent any
-
     environment{
         CI = 'true'
     }
-
     tools{
         nodejs "node"
     }
@@ -57,4 +55,5 @@ pipeline {
 
         }
     }
+ }
 }
