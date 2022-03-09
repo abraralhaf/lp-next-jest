@@ -6,7 +6,7 @@ pipeline {
         CI = 'true'
     }
     tools{
-        nodejs "node"
+        nodejs "Node-16.14.0"
     }
 
     stages {
