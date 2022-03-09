@@ -44,7 +44,6 @@ pipeline {
             steps{
                 sh 'npm run build'
                 echo 'finishing deployment'
-                sh 'dockerfile'
             }
         }
     }
