@@ -8,7 +8,7 @@ node {
        bat 'git rev-parse HEAD > commit'
 
        commitId = readFile('commit').trim()
-       echo "comId_1 (global var) before : ${env.comId_1}"
+       echo "comId_1 (global var) before : ${comId_1}"
        echo "commitId : ${commitId}"
        env.comId_1 = commitId
        echo "comId_1 (global var) after : ${env.comId_1}"
