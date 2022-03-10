@@ -1,0 +1,1 @@
+putty.exe -ssh abrar@127.0.0.1 -pw abrarhafis -P 3022 -m C:\ProgramData\Jenkins\.jenkins\workspace\docker-webapp\dep\cmd.txt
