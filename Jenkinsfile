@@ -1,13 +1,14 @@
 node {
 
- 
+ def commitId
 
    stage('SCM Checkout'){
        git credentialsId: 'github-credentials', url: 'https://github.com/abraralhaf/lp-next-jest.git'
-         checkout scm
-         echo "GIT_COMMIT is ${env.GIT_COMMIT}"
-         echo "BRANCH_NAME is ${BRANCH_NAME}"
-         echo "GIT COMMIT is ${GIT_COMMIT}"
+         
+       git rev-parse HEAD > commit
+
+       commitId = readFile('commit').trim()
+       echo "${commitId}"
     
    }
 //    stage('Initial Node'){
