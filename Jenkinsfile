@@ -5,7 +5,7 @@ node {
    stage('SCM Checkout'){
        git credentialsId: 'github-credentials', url: 'https://github.com/abraralhaf/lp-next-jest.git'
          
-       git rev-parse HEAD > commit
+       bat 'git rev-parse HEAD > commit'
 
        commitId = readFile('commit').trim()
        echo "${commitId}"
