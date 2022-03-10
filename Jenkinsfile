@@ -8,7 +8,7 @@ node {
        bat 'git rev-parse HEAD > commit'
 
        commitId = readFile('commit').trim()
-       echo "${commitId}"
+       echo "commitId : ${commitId}"
     
    }
 //    stage('Initial Node'){
