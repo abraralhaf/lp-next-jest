@@ -10,6 +10,7 @@ node {
        commitId = readFile('commit').trim()
        echo "commitId (global) before : ${env.GIT_COMMIT}"
        echo "commitId : ${commitId}"
+       env.GIT_COMMIT = commitId
        echo "commitId(global) after ${env.GIT_COMMIT}"
     
    }
