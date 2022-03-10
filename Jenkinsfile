@@ -1,9 +1,9 @@
 node {
    stage('SCM Checkout'){
        git credentialsId: 'github-credentials', url: 'https://github.com/abraralhaf/lp-next-jest.git'
-         withCheckout(scm) {
+         checkout scm
          echo "GIT_COMMIT is ${env.GIT_COMMIT}"
-    }
+    
    }
 //    stage('Initial Node'){
 //          nodejs(nodeJSInstallationName: 'node_local'){
