@@ -8,7 +8,9 @@ node {
        bat 'git rev-parse HEAD > commit'
 
        commitId = readFile('commit').trim()
+       echo "commitId (global) before : ${env.GIT_COMMIT}"
        echo "commitId : ${commitId}"
+       echo "commitId(global) after ${env.GIT_COMMIT}"
     
    }
 //    stage('Initial Node'){
