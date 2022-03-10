@@ -19,22 +19,30 @@ node {
         }
         echo 'finish run Build'
     }
-    
     stage('Build Docker Image'){
         echo 'Build Docker Image'
         bat 'docker build -t alhuft/landingpage-next:1.0.0 .'
     }
-    
     stage('Push Docker Image'){
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
             bat "docker login -u alhuft -p ${dockerHubPwd}" 
         }
         bat 'docker push alhuft/landingpage-next:1.0.0'
     }
-    
-    // stage('Deploy Container to server'){
-    //     bat 'dir'  
-    //     bat './dep/ssh_putty.bat'
-    // }
+    stage('Deploy Container to server'){
+        bat 'dir'
+        bat './dep/ssh_putty'
+        // def dockerRun = 'docker run -p 4040:8080 -d --name website-next alhuft/landingpage-next:1.0.0'
+        // sshagent(['abrarSSH']) {
+        //     bat "ssh -o -p 3022 StrictHostKeyChecking=no abrar@127.0.0.1 ${dockerRun}"
+        // }
+        // withCredentials([string(credentialsId: 'vmPwd', variable: 'vmPwd')]) {
+        //         sh 'ssh -t -p 3022 abrar@127.0.0.1'
+        //         sh 'sudo su'
+        //         sh "${vmPwd}"
+        //         sh "${dockerRun}"
+        //         sh 'curl localhost:4040'
+        // }
+    }
     
 }

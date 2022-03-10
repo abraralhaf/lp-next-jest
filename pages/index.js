@@ -1,30 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import axiosFetch from '../config/axios'
-// import Toptrack from '../components/Toptrack'
-import { useEffect, useState } from 'react/cjs/react.development'
 import Benefit from '../components/Benefit'
 
-
-
 export default function Home() {
-    
-    // const [dataMusic, setDataMusic] = useState(null);
-
-
-    // const getRecommendation = async() =>{
-    //   const result = await axiosFetch('hot');
-    //   console.log("result :",result.data);
-    //   const resultApi = result.data
-    //   console.log("hasil", resultApi.data);
-    //   setDataMusic(resultApi.data)
-    // }
-    // useEffect(() =>{
-    //   getRecommendation();
-    //   // setTracks(getRecommendation);
-    // },[])
-
   return (
     <div className='main'>
       <Head>
@@ -112,33 +91,7 @@ export default function Home() {
             </div>  
             <div className='border-t border-slate-700'></div>
       </header>
-      <Benefit></Benefit>
-   
-
-        {/* <section>
-          <div className='main-container py-10'>
-            <div className='ml-10'>
-              <div className='flex items-center gap-x-4 py-2'>
-                <Image
-                unoptimized
-                src='/icons/star.svg'
-                width="28"
-                height="28"
-                alt="star"
-                layout="fixed"
-                />
-                <h2 className='text-white font-bold tracking-wider text-3xl'>Trending Musik</h2>
-              </div>
-              <div className='grid grid-cols-1 mt-10 gap-5 overflow-y-auto h-72 scrollbar-hide md:grid-cols-3 lg:grid-cols-4'>
-                {dataMusic && dataMusic.map((music) =>{
-                 return <Toptrack key={music.songId}{...music} /> 
-                })}
-                </div>
-            </div>
-            </div>
-        </section> */}
-
-
+        <Benefit></Benefit>
         <footer className='bg-black mt-10'>
           <div className='main-container py-20'>
             <div className='grid grid-cols-1 ml-10 gap-4 md:grid-cols-3 lg:grid-cols-5'>
